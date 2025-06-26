@@ -348,19 +348,19 @@ def hivtrace(id,
     TN93DIST = 'tn93'
 
     # This will have to be another parameter
-    LANL_FASTA = os.path.join(temp_dir, 'LANL.FASTA')
-    LANL_TN93OUTPUT_CSV = os.path.join(temp_dir, 'LANL.TN93OUTPUT.csv')
+    LANL_FASTA = os.path.join(temp_dir.name, 'LANL.FASTA')
+    LANL_TN93OUTPUT_CSV = os.path.join(temp_dir.name, 'LANL.TN93OUTPUT.csv')
     DEFAULT_DELIMITER = '|'
 
     # Check if LANL files exists. If not, then check if zip file exists,
     # otherwise throw error
     try:
         if not os.path.isfile(LANL_FASTA):
-            lanl_zip = os.path.join(temp_dir, 'LANL.FASTA.gz')
+            lanl_zip = os.path.join(temp_dir.name, 'LANL.FASTA.gz')
             gunzip_file(lanl_zip, LANL_FASTA)
 
         if not os.path.isfile(LANL_TN93OUTPUT_CSV):
-            lanl_tn93output_zip = os.path.join(temp_dir,
+            lanl_tn93output_zip = os.path.join(temp_dir.name,
                                                'LANL.TN93OUTPUT.csv.gz')
             gunzip_file(lanl_tn93output_zip, LANL_TN93OUTPUT_CSV)
     except Exception as e:
